@@ -1,0 +1,31 @@
+definitions:
+  fasthttp.Content:
+    properties:
+      description:
+        type: string
+      id:
+        type: string
+      thumbnail:
+        type: string
+      title:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /contents:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all contents
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/fasthttp.Content'
+      summary: List all contents
+      tags:
+      - contents
+swagger: "2.0"

@@ -1,0 +1,24 @@
+version: '2.4'
+services:
+  mongo:
+    image: bitnami/mongodb:4.4.4
+    volumes:
+      - db:/data/db
+    environment:
+      MONGODB_USERNAME: spalla
+      MONGODB_PASSWORD: spalla
+      MONGODB_DATABASE: spalla
+    ports:
+      - 27017:27017
+  mongo-express:
+    image: mongo-express:0.54
+    environment:
+      ME_CONFIG_MONGODB_ENABLE_ADMIN: 0
+      ME_CONFIG_MONGODB_PORT: 27017
+      ME_CONFIG_MONGODB_AUTH_USERNAME: spalla
+      ME_CONFIG_MONGODB_AUTH_PASSWORD: spalla
+      ME_CONFIG_MONGODB_AUTH_DATABASE: spalla
+    ports:
+      - 8081:8081
+volumes:
+  db:
