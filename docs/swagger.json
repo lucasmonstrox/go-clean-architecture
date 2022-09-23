@@ -4,24 +4,42 @@
         "contact": {}
     },
     "paths": {
-        "/contents": {
+        "/todos": {
             "get": {
-                "description": "Get a list of all contents",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
+                "description": "Get a list of all todos",
                 "tags": [
-                    "contents"
+                    "todos"
                 ],
-                "summary": "List all contents",
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/fasthttp.Content"
+                            "$ref": "#/definitions/entities.Todo"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create a new todo",
+                "tags": [
+                    "todos"
+                ],
+                "parameters": [
+                    {
+                        "description": "input",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/entities.CreateTodoInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entities.Todo"
                         }
                     }
                 }
@@ -29,16 +47,27 @@
         }
     },
     "definitions": {
-        "fasthttp.Content": {
+        "entities.CreateTodoInput": {
             "type": "object",
             "properties": {
-                "description": {
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "entities.Todo": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "done": {
+                    "type": "boolean"
+                },
+                "doneAt": {
                     "type": "string"
                 },
                 "id": {
-                    "type": "string"
-                },
-                "thumbnail": {
                     "type": "string"
                 },
                 "title": {

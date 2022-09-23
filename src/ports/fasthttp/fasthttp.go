@@ -14,7 +14,10 @@ import (
 
 func MakeRoutes(client *mongo.Client) *router.Router {
 	r := router.New()
-	r.GET("/contents", controllers.SetupListContentsController(repositories.SetupListContentsRepository(client)))
+	listTodosRepository := repositories.SetupListTodosRepository(client)
+	r.GET("/todos", controllers.SetupListTodosController(listTodosRepository))
+	createTodoRepository := repositories.SetupCreateTodoRepository(client)
+	r.POST("/todos", controllers.SetupCreateTodoController(createTodoRepository))
 	return r
 }
 

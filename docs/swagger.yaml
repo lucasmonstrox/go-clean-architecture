@@ -1,11 +1,18 @@
 definitions:
-  fasthttp.Content:
+  entities.CreateTodoInput:
     properties:
-      description:
+      title:
+        type: string
+    type: object
+  entities.Todo:
+    properties:
+      createdAt:
+        type: string
+      done:
+        type: boolean
+      doneAt:
         type: string
       id:
-        type: string
-      thumbnail:
         type: string
       title:
         type: string
@@ -13,19 +20,30 @@ definitions:
 info:
   contact: {}
 paths:
-  /contents:
+  /todos:
     get:
-      consumes:
-      - application/json
-      description: Get a list of all contents
-      produces:
-      - application/json
+      description: Get a list of all todos
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/fasthttp.Content'
-      summary: List all contents
+            $ref: '#/definitions/entities.Todo'
       tags:
-      - contents
+      - todos
+    post:
+      description: Create a new todo
+      parameters:
+      - description: input
+        in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/entities.CreateTodoInput'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.Todo'
+      tags:
+      - todos
 swagger: "2.0"
