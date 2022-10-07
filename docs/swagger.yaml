@@ -1,10 +1,10 @@
 definitions:
-  entities.CreateTodoInput:
+  schemas.CreateTodoInput:
     properties:
       title:
         type: string
     type: object
-  entities.Todo:
+  schemas.Todo:
     properties:
       createdAt:
         type: string
@@ -27,7 +27,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/entities.Todo'
+            $ref: '#/definitions/schemas.Todo'
       tags:
       - todos
     post:
@@ -38,12 +38,12 @@ paths:
         name: payload
         required: true
         schema:
-          $ref: '#/definitions/entities.CreateTodoInput'
+          $ref: '#/definitions/schemas.CreateTodoInput'
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/entities.Todo'
+            $ref: '#/definitions/schemas.Todo'
       tags:
       - todos
 swagger: "2.0"

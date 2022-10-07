@@ -17,7 +17,7 @@ func SetupCreateTodoRepository(client *mongo.Client) func(input entities.CreateT
 		done := false
 		res, _ := collection.InsertOne(context.TODO(), bson.D{{"title", input.Title}, {"done", done}, {"createdAt", createdAt}})
 		todo := entities.Todo{
-			Id:        res.InsertedID.(primitive.ObjectID),
+			Id:        res.InsertedID.(primitive.ObjectID).String(),
 			Title:     input.Title,
 			Done:      done,
 			CreatedAt: createdAt,

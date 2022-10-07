@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"app/src/adapters"
 	"app/src/domain/entities"
 	usecases "app/src/domain/useCases/createTodo"
 	"encoding/json"
@@ -11,17 +12,17 @@ import (
 
 // @Description Create a new todo
 // @Tags        todos
-// @Param       payload body     entities.CreateTodoInput true "input"
-// @Success     200     {object} entities.Todo
+// @Param       payload body     schemas.CreateTodoInput true "input"
+// @Success     200     {object} schemas.Todo
 // @Router      /todos [post]
 func SetupCreateTodoController(createTodoRepository usecases.CreateTodoRepository) func(context *fasthttp.RequestCtx) {
 	useCase := usecases.SetupCreateTodoUseCase(createTodoRepository)
 	return func(context *fasthttp.RequestCtx) {
 		var input entities.CreateTodoInput
 		json.Unmarshal([]byte(string(context.PostBody())), &input)
-		fmt.Print(input)
 		todo := useCase(input)
-		res, errorEncodingJson := json.Marshal(todo)
+		todoToRest := adapters.TodoToRest(todo)
+		res, errorEncodingJson := json.Marshal(todoToRest)
 		hasErrorEncodingJson := errorEncodingJson != nil
 		if hasErrorEncodingJson {
 			fmt.Print("Error encoding json")

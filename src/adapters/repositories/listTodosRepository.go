@@ -18,7 +18,7 @@ func SetupListTodosRepository(client *mongo.Client) func() []entities.Todo {
 		cursor.All(context.TODO(), &todosDocuments)
 		for _, todoDocument := range todosDocuments {
 			todo := entities.Todo{
-				Id:        todoDocument.Id,
+				Id:        todoDocument.Id.String(),
 				Title:     todoDocument.Title,
 				Done:      todoDocument.Done,
 				CreatedAt: todoDocument.CreatedAt,

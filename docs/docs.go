@@ -26,7 +26,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/entities.Todo"
+                            "$ref": "#/definitions/schemas.Todo"
                         }
                     }
                 }
@@ -43,7 +43,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/entities.CreateTodoInput"
+                            "$ref": "#/definitions/schemas.CreateTodoInput"
                         }
                     }
                 ],
@@ -51,7 +51,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/entities.Todo"
+                            "$ref": "#/definitions/schemas.Todo"
                         }
                     }
                 }
@@ -59,7 +59,7 @@ const docTemplate = `{
         }
     },
     "definitions": {
-        "entities.CreateTodoInput": {
+        "schemas.CreateTodoInput": {
             "type": "object",
             "properties": {
                 "title": {
@@ -67,7 +67,7 @@ const docTemplate = `{
                 }
             }
         },
-        "entities.Todo": {
+        "schemas.Todo": {
             "type": "object",
             "properties": {
                 "createdAt": {

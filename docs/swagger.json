@@ -14,7 +14,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/entities.Todo"
+                            "$ref": "#/definitions/schemas.Todo"
                         }
                     }
                 }
@@ -31,7 +31,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/entities.CreateTodoInput"
+                            "$ref": "#/definitions/schemas.CreateTodoInput"
                         }
                     }
                 ],
@@ -39,7 +39,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/entities.Todo"
+                            "$ref": "#/definitions/schemas.Todo"
                         }
                     }
                 }
@@ -47,7 +47,7 @@
         }
     },
     "definitions": {
-        "entities.CreateTodoInput": {
+        "schemas.CreateTodoInput": {
             "type": "object",
             "properties": {
                 "title": {
@@ -55,7 +55,7 @@
                 }
             }
         },
-        "entities.Todo": {
+        "schemas.Todo": {
             "type": "object",
             "properties": {
                 "createdAt": {
