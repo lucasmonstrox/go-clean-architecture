@@ -47,14 +47,6 @@ View tables
 \dt
 ```
 
-## Creating the initial database
-
-Run initial migrations to set up initial database tables
-
-```bash
-yarn typeorm migration:run
-```
-
 # ⌨ Development
 
 ## ⚙ Running the app
